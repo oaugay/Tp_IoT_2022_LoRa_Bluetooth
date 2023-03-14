@@ -1,22 +1,15 @@
 # Tp_IoT_2022_LoRa_Bluetooth
 
-## 1. Client :
- 
-### 1. Récupération d'un paquet Mqtt sur test.mosquitto.org :  nomAP/ipaddr
+On commence le code par l'inclusion de bibliothèques telles que "SPI.h", "WiFi.h" et "PubSubClient.h". Ensuite, nous avons défini quelques constantes et variables utilisées plus tard dans le code. Nous initialisons également la structure "pack" pour stocker des données sous forme de tableaux de 8 bits et de valeurs flottantes.
 
-### 2. Se connecter à une carte sur l'AP et faire une requete http donnant les valeurs nécessaire à LoRa.
+La fonction "setup" initialise la communication série, configure les broches d'entrée et de sortie, initialise la communication LoRa, se connecte au réseau WiFi et se connecte au serveur MQTT. La fonction "reconnect" est appelée si la connexion au serveur MQTT est perdue.
 
-### 3. Ecouter les données de LoRa.
+La fonction "loop" commence par vérifier si la connexion MQTT est active, sinon elle appelle la fonction "reconnect". Ensuite, il publie des données sur le serveur MQTT toutes les 5 secondes. Il envoie également des paquets LoRa contenant les valeurs de d1 et d2, qui sont incrémentées à chaque itération de la boucle "loop". La fonction "delay" est utilisée pour ralentir la boucle et limiter la fréquence d'envoi de paquets.
 
-## 2. Serveur :
+En résumé, le code permet de communiquer via le réseau LoRa et le réseau WiFi, et de publier des données sur un serveur MQTT. Il est conçu pour envoyer des paquets de données périodiquement.
 
-### Faire le serveur servant les données au Client.
+Notre binôme était du côté emetteur et nous travaillions avec le groupe de Théo, qui était notre receveur.  
 
-## 3. Ensuite...
 
-### 1. Ajouter une fonction permettant de switcher entre Serveur et Client
-
-### 2. Sur le serveur, échangez la partie LoRa par du bluetooth (ou BLE)
-
-### 3. Refaire la partie cliente pour répondre au bluetooth
-
+Alix LATASTE
+Oscar AUGAY
